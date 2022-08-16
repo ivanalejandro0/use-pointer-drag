@@ -1,13 +1,14 @@
-import "./styles.css";
+import { DragBar, DragBarVertical } from "./drag-bar";
 
-import { DragBar } from "./drag-bar";
+import styles from "./App.module.css";
 
 export default function App() {
   return (
     <>
-      <p>click and drag</p>
-      <div className="App">
+      <div className={styles.container}>
+        <p>Click and drag to change bars' width.</p>
         <DragBar />
+        <DragBarVertical />
       </div>
     </>
   );

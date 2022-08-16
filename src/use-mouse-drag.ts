@@ -20,7 +20,13 @@ function useMouseEvent(
   );
 }
 
-export function useMouseDrag(onDrag: (x: number, y: number) => void): React.RefCallback<HTMLElement> {
+interface Offset {
+  width: number;
+  height: number;
+  left: number;
+  top: number;
+}
+export function useMouseDrag(onDrag: (x: number, y: number, offset: Offset) => void): React.RefCallback<HTMLElement> {
   const [dragging, setDragging] = useState<boolean>(false);
 
   const handleMouseDown = (_e: MouseEvent): void => {
@@ -57,7 +63,13 @@ export function useMouseDrag(onDrag: (x: number, y: number) => void): React.RefC
     // console.log("mouse move");
     // throw new Error("move");
     // const { offsetLeft, offsetWidth } = ref.current;
-    onDrag(e.clientX, e.clientY);
+    const offset = {
+      width: ref.current.offsetWidth,
+      height: ref.current.offsetHeight,
+      left: ref.current.offsetLeft,
+      top: ref.current.offsetTop,
+    }
+    onDrag(e.clientX, e.clientY, offset);
   });
 
   return setRef;

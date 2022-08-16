@@ -1,5 +1,23 @@
 .bar {
   width: 90%;
   height: 50px;
+  background-color: grey;
+  display: flex;
+}
+
+.filled {
   background-color: rgb(107, 107, 231);
+}
+
+.barVertical {
+  margin-top: 20px;
+  width: 50px;
+  height: 200px;
+  background-color: grey;
+  display: flex;
+}
+
+.filledVertical {
+  background-color: rgb(107, 107, 231);
+  width: 100%;
 }
