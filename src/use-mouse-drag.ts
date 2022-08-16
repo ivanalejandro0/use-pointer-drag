@@ -32,6 +32,7 @@ export function useMouseDrag(onDrag: (x: number, y: number) => void): React.RefC
   const setRef = useCallback((node: HTMLElement) => {
     ref.current = node;
     if (!node) return;
+    // listen to the event once we have a node
     node.addEventListener("mousedown", handleMouseDown, {
       capture: true
     });
