@@ -6,9 +6,11 @@ import styles from "./drag-bar.module.css";
 export function DragBar() {
   const [width, setWidth] = useState(50);
 
-  const ref = useMouseDrag((x, y, offset) => {
-    // console.log("dragging:", x, y, offset);
-    setWidth( Math.round(100 * (x - offset.left) / offset.width) );
+  const ref = useMouseDrag((x, _y, offset) => {
+    let w = Math.round(100 * (x - offset.left) / offset.width);
+    w = Math.min(w, 100);
+    w = Math.max(w, 0);
+    setWidth(w);
   });
 
   return (
@@ -22,8 +24,10 @@ export function DragBarVertical() {
   const [height, setHeight] = useState(50);
 
   const ref = useMouseDrag((_x, y, offset) => {
-    console.log("dragging:", _x, y, offset);
-    setHeight( Math.round(100 * (y - offset.top) / offset.height) );
+    let h = Math.round(100 * (y - offset.top) / offset.height);
+    h = Math.min(h, 100);
+    h = Math.max(h, 0);
+    setHeight(h);
   });
 
   return (
