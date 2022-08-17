@@ -20,13 +20,8 @@ export function useMouseDrag(onDrag: (x: number, y: number, offset: Offset) => v
   }, []);
 
   const handleMouseMove = useCallback((e: MouseEvent) => {
-    if (!dragging || !ref?.current) {
-      // console.log("mousemove: noref");
-      return;
-    }
+    if (!dragging || !ref?.current) return;
     // console.log("mouse move");
-    // throw new Error("move");
-    // const { offsetLeft, offsetWidth } = ref.current;
     const offset = {
       width: ref.current.offsetWidth,
       height: ref.current.offsetHeight,
