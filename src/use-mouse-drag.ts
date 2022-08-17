@@ -1,25 +1,5 @@
 import { useState, useEffect, useCallback, useRef } from "react";
 
-function useMouseEvent(
-  event: "mouseup" | "mousemove" | "mousedown",
-  handler: (e: MouseEvent) => void
-) {
-  useEffect(
-    function listenToGlobalMouseEvents() {
-      const target = document;
-      if (!target) throw new Error("missing target")
-      target.addEventListener(event, handler as (e: Event) => void, {
-        capture: true
-      });
-      return () =>
-        target.removeEventListener(event, handler as (e: Event) => void, {
-          capture: true
-        });
-    },
-    [event, handler]
-  );
-}
-
 interface Offset {
   width: number;
   height: number;
@@ -29,33 +9,17 @@ interface Offset {
 export function useMouseDrag(onDrag: (x: number, y: number, offset: Offset) => void): React.RefCallback<HTMLElement> {
   const [dragging, setDragging] = useState<boolean>(false);
 
-  const handleMouseDown = (_e: MouseEvent): void => {
+  const handleMouseDown = useCallback((_e: MouseEvent): void => {
     setDragging(true);
     // console.log('drag start:', {x: _e.clientX, y: _e.clientY});
-  };
-
-  const ref = useRef<HTMLElement | null>(null);
-  const setRef = useCallback((node: HTMLElement) => {
-    ref.current = node;
-    if (!node) return;
-    // listen to the event once we have a node
-    node.addEventListener("mousedown", handleMouseDown, {
-      capture: true
-    });
   }, []);
 
-  useEffect(() => {
-    return () => {
-      ref.current?.removeEventListener("mousedown", handleMouseDown);
-    };
-  }, []);
-
-  useMouseEvent("mouseup", (_e: MouseEvent) => {
+  const handleMouseUp = useCallback((_e: MouseEvent): void => {
     setDragging(false);
     // console.log('drag end:', {x: _e.clientX, y: _e.clientY});
-  });
+  }, []);
 
-  useMouseEvent("mousemove", (e: MouseEvent) => {
+  const handleMouseMove = useCallback((e: MouseEvent) => {
     if (!dragging || !ref?.current) {
       // console.log("mousemove: noref");
       return;
@@ -70,7 +34,25 @@ export function useMouseDrag(onDrag: (x: number, y: number, offset: Offset) => v
       top: ref.current.offsetTop,
     }
     onDrag(e.clientX, e.clientY, offset);
-  });
+  }, [dragging, onDrag]);
+
+  const ref = useRef<HTMLElement | null>(null);
+  const setRef = useCallback((node: HTMLElement) => {
+    ref.current = node;
+    if (!node) return;
+    // listen to the event once we have a node
+    node.addEventListener("mousedown", handleMouseDown, { capture: true });
+  }, [handleMouseDown]);
+
+  useEffect(() => {
+    document.addEventListener("mouseup", handleMouseUp, { capture: true });
+    document.addEventListener("mousemove", handleMouseMove, { capture: true });
+    return () => {
+      ref.current?.removeEventListener("mousedown", handleMouseDown);
+      ref.current?.removeEventListener("mouseup", handleMouseUp);
+      ref.current?.removeEventListener("mousemove", handleMouseMove);
+    };
+  }, [handleMouseMove, handleMouseUp, handleMouseDown]);
 
   return setRef;
 }
