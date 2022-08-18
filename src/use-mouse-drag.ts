@@ -48,6 +48,10 @@ export function useMouseDrag(
     node.addEventListener("mousedown", handleMouseDown, { capture: true });
   }, [handleMouseDown]);
 
+  // Listeners are attached to the document and not the node so the user can
+  // drag and move from outside the element.
+  // If the listener were to be attached to the node, the dragging action
+  // wouldn't work if the user moves the cursor outside the clicked element.
   useEffect(() => {
     document.addEventListener("mouseup", handleMouseUp, { capture: true });
     document.addEventListener("mousemove", handleMouseMove, { capture: true });
