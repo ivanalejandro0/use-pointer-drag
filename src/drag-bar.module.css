@@ -3,6 +3,7 @@
   height: 50px;
   background-color: grey;
   display: flex;
+  cursor: grab;
 }
 
 .filled {
@@ -15,9 +16,14 @@
   height: 200px;
   background-color: rgb(107, 107, 231);
   display: flex;
+  cursor: grab;
 }
 
 .filledVertical {
   background-color: grey;
   width: 100%;
+}
+
+.grabbing {
+  cursor: grabbing;
 }

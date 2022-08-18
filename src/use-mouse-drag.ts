@@ -6,16 +6,24 @@ interface Offset {
   left: number;
   top: number;
 }
-export function useMouseDrag(onDrag: (x: number, y: number, offset: Offset) => void): React.RefCallback<HTMLElement> {
+export function useMouseDrag(
+  onDrag: (x: number, y: number, offset: Offset) => void,
+  onDragChange?: (isDragging: boolean) => void,
+): React.RefCallback<HTMLElement> {
   const [dragging, setDragging] = useState<boolean>(false);
+
+  // To show how's necessary to `useCallback` for your handlers
+  useEffect(() => { console.log("onDrag changed") }, [onDrag]);
 
   const handleMouseDown = useCallback((_e: MouseEvent): void => {
     setDragging(true);
-  }, []);
+    onDragChange?.(true);
+  }, [onDragChange]);
 
   const handleMouseUp = useCallback((_e: MouseEvent): void => {
     setDragging(false);
-  }, []);
+    onDragChange?.(false);
+  }, [onDragChange]);
 
   const handleMouseMove = useCallback((e: MouseEvent) => {
     if (!dragging || !ref?.current) return;
