@@ -13,11 +13,11 @@
   margin-top: 20px;
   width: 50px;
   height: 200px;
-  background-color: grey;
+  background-color: rgb(107, 107, 231);
   display: flex;
 }
 
 .filledVertical {
-  background-color: rgb(107, 107, 231);
+  background-color: grey;
   width: 100%;
 }
