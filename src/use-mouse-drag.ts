@@ -14,7 +14,7 @@ export function useMouseDrag(
   const [dragging, setDragging] = useState<boolean>(false);
 
   // To show how's necessary to `useCallback` for your handlers
-  useEffect(() => { console.log("onDrag changed") }, [onDrag]);
+  // useEffect(() => { console.log("onDrag changed") }, [onDrag]);
 
   const handleMouseDown = useCallback((_e: MouseEvent): void => {
     setDragging(true);
@@ -48,6 +48,16 @@ export function useMouseDrag(
     // if we have a node, attach listener
     node.addEventListener("mousedown", handleMouseDown, { capture: true });
   }, [handleMouseDown]);
+
+  // Something like this would be useful to support only dragging inside of the element
+  // I use document instead since it's desirable to report dragging even if the
+  // user goes outside of the element while holding the pointer clicked
+  // useEffect(() => {
+  //   ref.current?.addEventListener("mousemove", handleMouseMove, { capture: true });
+  //   return () => {
+  //     ref.current?.removeEventListener("mousemove", handleMouseMove, {capture: true});
+  //   };
+  // }, [dragging, handleMouseMove])
 
   // Listeners are attached to the document and not the node so the user can
   // drag and move from outside the element.

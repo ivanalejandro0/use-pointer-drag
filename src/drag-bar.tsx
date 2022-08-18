@@ -17,15 +17,17 @@ export function DragBarHorizontal() {
     useCallback((isDragging: boolean) => { setDragging(isDragging) }, [])
   );
 
-  useEffect(()  => {
+  // show cursor as grabbing hand while dragging
+  // even if the cursor is outside of the element
+  useEffect(() => {
     if (dragging) {
       document.body.classList.add(styles.grabbing);
     } else {
-        document.body.classList.remove(styles.grabbing);
+      document.body.classList.remove(styles.grabbing);
     }
 
     return () => {
-        document.body.classList.remove(styles.grabbing);
+      document.body.classList.remove(styles.grabbing);
     };
   }, [dragging]);
 
