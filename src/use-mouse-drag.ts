@@ -9,6 +9,7 @@ interface Offset {
 export function useMouseDrag(
   onDrag: (x: number, y: number, offset: Offset) => void,
   onDragChange?: (isDragging: boolean) => void,
+  // maybe send same params as for `onDrag` along with `isDragging`
 ): React.RefCallback<HTMLElement> {
   const [dragging, setDragging] = useState<boolean>(false);
 
