@@ -82,3 +82,16 @@ test("tracks every point where the pointer was", async () => {
   expect(results).not.toContain(10)
   expect(results).toEqual(expect.arrayContaining([120, 130, 140]));
 });
+
+test.skip("click and drag outside won't trigger event", () => {
+  // drag is enabled by clicking and holding the bar
+});
+
+test.skip("drag outside of bar works", () => {
+  // click the bar, move the mouse out, drag mouse, unclick
+  // check for value to change accordingly
+});
+
+test.skip("drag stops once mouse is no longer pressed", () => {
+  // drag and check value, move mouse and check value
+});
