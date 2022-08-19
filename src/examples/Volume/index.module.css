@@ -1,0 +1,22 @@
+.container {
+  margin-top: 20px;
+  width: 50px;
+  height: 200px;
+  display: flex;
+  align-items: flex-end;
+  background-color: grey;
+  cursor: grab;
+}
+
+.filled {
+  background-color: rgb(107, 107, 231);
+  width: 100%;
+}
+
+.handle {
+  border-top: 5px solid black;
+}
+
+.grabbing {
+  cursor: grabbing;
+}
