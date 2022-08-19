@@ -23,12 +23,14 @@ test("can drag horizontally", async () => {
 
   const element = screen.getByTestId('drag-bar');
   await user.pointer([
-    { keys: '[MouseLeft>]', target: element },
+    { keys: '[MouseLeft>]', coords: { x: 40 }, target: element },
     { coords: { x: 40 } },
+    { coords: { x: 50 } },
+    { coords: { x: 60 } },
     '[/MouseLeft]',
   ])
 
-  expect(resultX).toEqual(40);
+  expect(resultX).toEqual(60);
 });
 
 test("can drag vertically", async () => {

@@ -21,12 +21,12 @@ export function useMouseDrag(
     onDragChange?.(true);
   }, [onDragChange]);
 
-  const handleMouseUp = useCallback((_e: MouseEvent): void => {
+  const handlePointerUp = useCallback((_e: MouseEvent): void => {
     setDragging(false);
     onDragChange?.(false);
   }, [onDragChange]);
 
-  const handleMouseMove = useCallback((e: MouseEvent) => {
+  const handlePointerMove = useCallback((e: MouseEvent) => {
     if (!dragging || !ref?.current) return;
     const offset = {
       width: ref.current.offsetWidth,
@@ -41,21 +41,21 @@ export function useMouseDrag(
   const setRef = useCallback((node: HTMLElement) => {
     if (!node) {
       // remove previously attached listener, if any
-      ref.current?.removeEventListener("mousedown", handleMouseDown, {capture: true});
+      ref.current?.removeEventListener("pointerdown", handleMouseDown, {capture: true});
     }
     ref.current = node;
     if (!node) return;
     // if we have a node, attach listener
-    node.addEventListener("mousedown", handleMouseDown, { capture: true });
+    node.addEventListener("pointerdown", handleMouseDown, { capture: true });
   }, [handleMouseDown]);
 
   // Something like this would be useful to support only dragging inside of the element
   // I use document instead since it's desirable to report dragging even if the
   // user goes outside of the element while holding the pointer clicked
   // useEffect(() => {
-  //   ref.current?.addEventListener("mousemove", handleMouseMove, { capture: true });
+  //   ref.current?.addEventListener("pointermove", handleMouseMove, { capture: true });
   //   return () => {
-  //     ref.current?.removeEventListener("mousemove", handleMouseMove, {capture: true});
+  //     ref.current?.removeEventListener("pointermove", handleMouseMove, {capture: true});
   //   };
   // }, [dragging, handleMouseMove])
 
@@ -64,13 +64,13 @@ export function useMouseDrag(
   // If the listener were to be attached to the node, the dragging action
   // wouldn't work if the user moves the cursor outside the clicked element.
   useEffect(() => {
-    document.addEventListener("mouseup", handleMouseUp, { capture: true });
-    document.addEventListener("mousemove", handleMouseMove, { capture: true });
+    document.addEventListener("pointerup", handlePointerUp, { capture: true });
+    document.addEventListener("pointermove", handlePointerMove, { capture: true });
     return () => {
-      document.removeEventListener("mouseup", handleMouseUp, {capture: true});
-      document.removeEventListener("mousemove", handleMouseMove, {capture: true});
+      document.removeEventListener("pointerup", handlePointerUp, {capture: true});
+      document.removeEventListener("pointermove", handlePointerMove, {capture: true});
     };
-  }, [handleMouseMove, handleMouseUp]);
+  }, [handlePointerMove, handlePointerUp]);
 
   return setRef;
 }

@@ -7,7 +7,6 @@ export default function App() {
   return (
     <>
       <div className={styles.container}>
-        <p>Click and drag to change bars' width.</p>
         <TimeIndicator />
         <Volume />
       </div>

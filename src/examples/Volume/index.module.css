@@ -6,6 +6,7 @@
   align-items: flex-end;
   background-color: grey;
   cursor: grab;
+  touch-action: none;
 }
 
 .filled {
