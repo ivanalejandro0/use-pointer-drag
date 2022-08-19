@@ -1,0 +1,27 @@
+.container {
+  margin-top: 20px;
+  width: 90%;
+  height: 450px;
+  display: flex;
+  cursor: grab;
+  touch-action: none;
+  background: url('./webb-southern_ring_nebula.png');
+}
+
+.filled {
+  background: url('./hubble-southern_ring_nebula.png');
+  border-right: 2px dashed white;
+}
+
+.handle {
+  background-color: white;
+  width: 20px;
+  height: 20px;
+  border-radius: 100%;
+  margin-left: -11px;
+  margin-top: 50%;
+}
+
+.grabbing {
+  cursor: grabbing;
+}
