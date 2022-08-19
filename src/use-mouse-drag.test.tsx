@@ -97,9 +97,6 @@ test("drag outside of bar works", async () => {
   const { result } = renderHook(() => useMouseDrag((x) => {
     resultX = x;
   }));
-
-  expect(result.current).not.toBeUndefined();
-
   render(<MyDiv ref={result.current} />);
 
   const element = screen.getByTestId('drag-bar');
