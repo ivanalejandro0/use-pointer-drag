@@ -9,6 +9,8 @@ export default function App() {
   return (
     <div className={styles.container}>
       <h1>Example widgets created with usePointerDrag</h1>
+      <p>They are very basic, just to showcase what can be done.</p>
+
       <h2>Time control</h2>
       <p>Usually seen on video and audio players.</p>
       <TimeIndicator />

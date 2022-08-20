@@ -25,12 +25,11 @@ export function Debug() {
 
   return (
     <div>
-      <div ref={ref} className={styles.container}>
-      </div>
+      <div ref={ref} className={styles.container} />
       <div>Dragging: {dragging ? 'true' : 'false'}</div>
-      <div>Pointer position: (x = {x}, y = {y})</div>
-      <div>top = {top}, left = {left}</div>
-      <div>width = {width}, height = {height}</div>
+      <div>Pointer position: x = {x}, y = {y}</div>
+      <div>Element position: top = {top}, left = {left}</div>
+      <div>Element size: width = {width}, height = {height}</div>
     </div>
   );
 }
