@@ -4,7 +4,6 @@
   height: 450px;
   display: flex;
   cursor: grab;
-  touch-action: none;
   background: url('./webb-southern_ring_nebula.png');
 }
 
@@ -14,6 +13,7 @@
 }
 
 .handle {
+  touch-action: none;
   background-color: white;
   width: 20px;
   height: 20px;
