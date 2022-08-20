@@ -25,14 +25,14 @@ export function ImageSideSplit() {
   useCursorGrabbing(dragging);
 
   const ref = usePointerDrag(
-    useCallback((x, _y, offset) => {
+    useCallback((isDragging, x, _y, offset) => {
       let w = Math.round(100 * (x - offset.left) / offset.width);
       w = Math.min(w, 100); // max is 100
       w = Math.max(w, 0); // min is 0
       // w = Math.round(w / 10) * 10; // in steps of 10
       setWidth(w);
+      setDragging(isDragging);
     }, []),
-    useCallback((isDragging: boolean) => { setDragging(isDragging) }, [])
   );
 
   return (

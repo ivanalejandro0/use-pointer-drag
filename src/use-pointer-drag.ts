@@ -7,35 +7,42 @@ interface Offset {
   top: number;
 }
 export function usePointerDrag(
-  onDrag: (x: number, y: number, offset: Offset) => void,
-  onDragChange?: (isDragging: boolean) => void,
-  // maybe send same params as for `onDrag` along with `isDragging`
+  onDrag: (isDragging: boolean, x: number, y: number, offset: Offset) => void,
 ): React.RefCallback<HTMLElement> {
   const [dragging, setDragging] = useState<boolean>(false);
 
   // To show how's necessary to `useCallback` for your handlers
   // useEffect(() => { console.log("onDrag changed") }, [onDrag]);
 
-  const handlePointerDown = useCallback((_e: MouseEvent): void => {
-    setDragging(true);
-    onDragChange?.(true);
-  }, [onDragChange]);
-
-  const handlePointerUp = useCallback((_e: MouseEvent): void => {
-    setDragging(false);
-    onDragChange?.(false);
-  }, [onDragChange]);
-
-  const handlePointerMove = useCallback((e: MouseEvent) => {
-    if (!dragging || !ref?.current) return;
+  const reportDrag = useCallback((isDragging: boolean, x: number, y: number) => {
+    if (!ref?.current) return;
     const offset = {
       width: ref.current.offsetWidth,
       height: ref.current.offsetHeight,
       left: ref.current.offsetLeft,
       top: ref.current.offsetTop,
     }
-    onDrag(e.clientX, e.clientY, offset);
-  }, [dragging, onDrag]);
+    onDrag(isDragging, x, y, offset);
+  }, [onDrag]);
+
+  const handlePointerDown = useCallback((e: MouseEvent): void => {
+    setDragging(true);
+    reportDrag(true, e.clientX, e.clientY);
+  }, [reportDrag]);
+
+  const handlePointerUp = useCallback((e: MouseEvent): void => {
+    if (dragging) {
+      // if dagging just stopped, report that
+      // otherwise, ignore
+      reportDrag(false, e.clientX, e.clientY);
+    }
+    setDragging(false);
+  }, [dragging, reportDrag]);
+
+  const handlePointerMove = useCallback((e: MouseEvent) => {
+    if (!dragging) return;
+    reportDrag(true, e.clientX, e.clientY);
+  }, [dragging, reportDrag]);
 
   const ref = useRef<HTMLElement | null>(null);
   const setRef = useCallback((node: HTMLElement) => {
