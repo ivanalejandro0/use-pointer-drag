@@ -16,7 +16,7 @@ export function usePointerDrag(
   // To show how's necessary to `useCallback` for your handlers
   // useEffect(() => { console.log("onDrag changed") }, [onDrag]);
 
-  const handleMouseDown = useCallback((_e: MouseEvent): void => {
+  const handlePointerDown = useCallback((_e: MouseEvent): void => {
     setDragging(true);
     onDragChange?.(true);
   }, [onDragChange]);
@@ -41,13 +41,13 @@ export function usePointerDrag(
   const setRef = useCallback((node: HTMLElement) => {
     if (!node) {
       // remove previously attached listener, if any
-      ref.current?.removeEventListener("pointerdown", handleMouseDown, {capture: true});
+      ref.current?.removeEventListener("pointerdown", handlePointerDown, {capture: true});
     }
     ref.current = node;
     if (!node) return;
     // if we have a node, attach listener
-    node.addEventListener("pointerdown", handleMouseDown, { capture: true });
-  }, [handleMouseDown]);
+    node.addEventListener("pointerdown", handlePointerDown, { capture: true });
+  }, [handlePointerDown]);
 
   // Something like this would be useful to support only dragging inside of the element
   // I use document instead since it's desirable to report dragging even if the
