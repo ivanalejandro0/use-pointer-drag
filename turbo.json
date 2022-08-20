@@ -6,6 +6,12 @@
       "dependsOn": ["^build"],
       "outputs": ["dist/**", "build/**"]
     },
+    "start": {
+      "dependsOn": ["^start", "use-pointer-drag#build"]
+    },
+    "test": {
+      "dependsOn": ["^test"]
+    },
     "lint": {
       "outputs": []
     },
