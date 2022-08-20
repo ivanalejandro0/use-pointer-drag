@@ -1,5 +1,5 @@
 {
-  "name": "use-pointer-drag",
+  "name": "examples",
   "version": "0.1.0",
   "description": "React hook to help you handle pointer drag on your components",
   "private": true,
