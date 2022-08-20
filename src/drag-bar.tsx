@@ -1,5 +1,5 @@
 import { useState, useCallback, useEffect } from "react";
-import { useMouseDrag } from "./use-mouse-drag";
+import { usePointerDrag } from "./use-pointer-drag";
 
 import styles from "./drag-bar.module.css";
 
@@ -7,7 +7,7 @@ export function DragBarHorizontal() {
   const [width, setWidth] = useState(50);
   const [dragging, setDragging] = useState<boolean>(false);
 
-  const ref = useMouseDrag(
+  const ref = usePointerDrag(
     useCallback((x, _y, offset) => {
       let w = Math.round(100 * (x - offset.left) / offset.width);
       w = Math.min(w, 100);
@@ -41,7 +41,7 @@ export function DragBarHorizontal() {
 export function DragBarVertical() {
   const [height, setHeight] = useState(50);
 
-  const ref = useMouseDrag((_x, y, offset) => {
+  const ref = usePointerDrag((_x, y, offset) => {
     let h = Math.round(100 * (y - offset.top) / offset.height);
     h = Math.min(h, 100);
     h = Math.max(h, 0);

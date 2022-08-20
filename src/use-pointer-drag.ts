@@ -6,7 +6,7 @@ interface Offset {
   left: number;
   top: number;
 }
-export function useMouseDrag(
+export function usePointerDrag(
   onDrag: (x: number, y: number, offset: Offset) => void,
   onDragChange?: (isDragging: boolean) => void,
   // maybe send same params as for `onDrag` along with `isDragging`

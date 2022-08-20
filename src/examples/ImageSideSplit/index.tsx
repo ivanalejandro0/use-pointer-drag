@@ -1,5 +1,5 @@
 import { useState, useCallback, useEffect } from "react";
-import { useMouseDrag } from "../../use-mouse-drag";
+import { usePointerDrag } from "../../use-pointer-drag";
 
 import styles from "./index.module.css";
 
@@ -24,7 +24,7 @@ export function ImageSideSplit() {
 
   useCursorGrabbing(dragging);
 
-  const ref = useMouseDrag(
+  const ref = usePointerDrag(
     useCallback((x, _y, offset) => {
       let w = Math.round(100 * (x - offset.left) / offset.width);
       w = Math.min(w, 100); // max is 100

@@ -1,7 +1,7 @@
 {
-  "name": "use-mouse-drag",
+  "name": "use-pointer-drag",
   "version": "0.1.0",
-  "description": "React hook to help you handle mouse drag on your components",
+  "description": "React hook to help you handle pointer drag on your components",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.14.1",
