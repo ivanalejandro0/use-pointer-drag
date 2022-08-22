@@ -1,10 +1,16 @@
 {
-  "name": "use-pointer-drag",
+  "name": "@ivanalejandro0/use-pointer-drag",
   "version": "0.1.0",
+  "author": "Ivan Alejandro <ivanalejandro0@gmail.com> (http://ivanalejandro0.com)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ivanalejandro0/use-pointer-drag",
+    "directory": "packages/use-pointer-drag"
+  },
+  "license": "MIT",
   "source": "./src/index.ts",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
-  "license": "MIT",
   "scripts": {
     "build": "tsc",
     "test": "jest src/",

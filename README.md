@@ -34,12 +34,12 @@ allows.
 ## Installation
 Using yarn:
 ```
-$ yarn add use-pointer-drag
+$ yarn add @ivanalejandro0/use-pointer-drag
 ```
 
 Using npm:
 ```
-$ npm install --save use-pointer-drag
+$ npm install --save @ivanalejandro0/use-pointer-drag
 ```
 
 ## How to use
@@ -52,7 +52,7 @@ clicks/taps and drags over the element.
 Here's some example code:
 
 ```jsx
-import { usePointerDrag } from "use-pointer-drag";
+import { usePointerDrag } from "@ivanalejandro0/use-pointer-drag";
 
 // from: ./apps/examples/
 export function Debug() {

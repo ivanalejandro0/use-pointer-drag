@@ -1,5 +1,5 @@
 import { useState, useCallback, useEffect } from "react";
-import { usePointerDrag } from "use-pointer-drag";
+import { usePointerDrag } from "@ivanalejandro0/use-pointer-drag";
 
 import styles from "./index.module.css";
 

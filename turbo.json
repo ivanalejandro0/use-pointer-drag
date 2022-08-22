@@ -7,7 +7,7 @@
       "outputs": ["dist/**", "build/**"]
     },
     "start": {
-      "dependsOn": ["^start", "use-pointer-drag#build"]
+      "dependsOn": ["^start", "@ivanalejandro0/use-pointer-drag#build"]
     },
     "test": {
       "dependsOn": ["^test"]
