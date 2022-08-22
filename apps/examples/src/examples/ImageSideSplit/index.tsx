@@ -17,7 +17,6 @@ function useCursorGrabbing(grabbing = false) {
   }, [grabbing]);
 }
 
-
 export function ImageSideSplit() {
   const [width, setWidth] = useState(50);
   const [dragging, setDragging] = useState<boolean>(false);
@@ -29,7 +28,6 @@ export function ImageSideSplit() {
       let w = Math.round(100 * (x - offset.left) / offset.width);
       w = Math.min(w, 100); // max is 100
       w = Math.max(w, 0); // min is 0
-      // w = Math.round(w / 10) * 10; // in steps of 10
       setWidth(w);
       setDragging(isDragging);
     }, []),

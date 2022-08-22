@@ -23,6 +23,6 @@
   top: 50%;
 }
 
-.grabbing {
+.grabbing * {
   cursor: grabbing;
 }
