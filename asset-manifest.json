@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/use-pointer-drag/static/css/main.eded0220.css",
-    "main.js": "/use-pointer-drag/static/js/main.ca5df058.js",
-    "static/js/415.dddcd69a.chunk.js": "/use-pointer-drag/static/js/415.dddcd69a.chunk.js",
+    "main.js": "/use-pointer-drag/static/js/main.fe34f417.js",
+    "static/js/367.1f72fcee.chunk.js": "/use-pointer-drag/static/js/367.1f72fcee.chunk.js",
     "static/media/webb-southern_ring_nebula.png": "/use-pointer-drag/static/media/webb-southern_ring_nebula.8f6e29a18e935a532606.png",
     "static/media/hubble-southern_ring_nebula.png": "/use-pointer-drag/static/media/hubble-southern_ring_nebula.18f1936bda18559970aa.png",
     "index.html": "/use-pointer-drag/index.html",
     "main.eded0220.css.map": "/use-pointer-drag/static/css/main.eded0220.css.map",
-    "main.ca5df058.js.map": "/use-pointer-drag/static/js/main.ca5df058.js.map",
-    "415.dddcd69a.chunk.js.map": "/use-pointer-drag/static/js/415.dddcd69a.chunk.js.map"
+    "main.fe34f417.js.map": "/use-pointer-drag/static/js/main.fe34f417.js.map",
+    "367.1f72fcee.chunk.js.map": "/use-pointer-drag/static/js/367.1f72fcee.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.eded0220.css",
-    "static/js/main.ca5df058.js"
+    "static/js/main.fe34f417.js"
   ]
 }
