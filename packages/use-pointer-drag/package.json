@@ -14,7 +14,10 @@
   "scripts": {
     "build": "tsc",
     "test": "jest src/",
-    "clean": "rm -fr dist"
+    "clean": "rm -fr dist",
+    "prepack": "cp ../../README.md .",
+    "postpack": "rm -f README.md",
+    "verify": "./verify.sh"
   },
   "dependencies": {
     "react": ">=17 <=18"
@@ -33,6 +36,7 @@
     "typescript": "^4.7.4"
   },
   "files": [
-    "dist/"
+    "dist/",
+    "src/"
   ]
 }
