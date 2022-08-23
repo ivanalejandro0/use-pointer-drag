@@ -24,7 +24,7 @@ export function Volume() {
   useCursorGrabbing(dragging);
 
   const ref = usePointerDrag(
-    useCallback((isDragging, _x, y, offset) => {
+    useCallback(({ isDragging, y, offset }) => {
       let h = Math.round(100 * (y - offset.top) / offset.height);
       h = Math.min(h, 100);
       h = Math.max(h, 0);

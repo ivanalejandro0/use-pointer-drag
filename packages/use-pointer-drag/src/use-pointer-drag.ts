@@ -6,8 +6,16 @@ interface Offset {
   left: number;
   top: number;
 }
+
+interface Args {
+  isDragging: boolean;
+  x: number;
+  y: number;
+  offset: Offset;
+}
+
 export function usePointerDrag(
-  onDrag: (isDragging: boolean, x: number, y: number, offset: Offset) => void,
+  onDrag: ({ isDragging, x, y, offset }: Args) => void,
 ): React.RefCallback<HTMLElement> {
   const [dragging, setDragging] = useState<boolean>(false);
 
@@ -22,7 +30,7 @@ export function usePointerDrag(
       left: ref.current.offsetLeft,
       top: ref.current.offsetTop,
     }
-    onDrag(isDragging, x, y, offset);
+    onDrag({isDragging, x, y, offset});
   }, [onDrag]);
 
   const handlePointerDown = useCallback((e: MouseEvent): void => {

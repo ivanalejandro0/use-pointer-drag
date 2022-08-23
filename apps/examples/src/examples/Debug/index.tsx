@@ -10,23 +10,23 @@ type Data = {
   left: number,
   height: number,
   width: number,
-  dragging: boolean,
+  isDragging: boolean,
 }
 
 export function Debug() {
   const [data, setData] = useState<Data>();
   const ref = usePointerDrag(
-    useCallback((dragging, x, y, offset) => {
-      setData({x, y, dragging, ...offset})
+    useCallback(({ isDragging, x, y, offset }) => {
+      setData({x, y, isDragging, ...offset})
     }, [])
   );
 
-  const { dragging, x, y, top, left, height, width } = data || {};
+  const { isDragging, x, y, top, left, height, width } = data || {};
 
   return (
     <div>
       <div ref={ref} className={styles.container} />
-      <div>Dragging: {dragging ? 'true' : 'false'}</div>
+      <div>Dragging: {isDragging ? 'true' : 'false'}</div>
       <div>Pointer position: x = {x}, y = {y}</div>
       <div>Element position: top = {top}, left = {left}</div>
       <div>Element size: width = {width}, height = {height}</div>

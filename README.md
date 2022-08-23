@@ -58,12 +58,12 @@ import { usePointerDrag } from "@ivanalejandro0/use-pointer-drag";
 export function Debug() {
   const [data, setData] = useState();
   const ref = usePointerDrag(
-    useCallback((dragging, x, y, offset) => {
-      setData({x, y, dragging, ...offset})
+    useCallback(({ isDragging, x, y, offset }) => {
+      setData({x, y, isDragging, ...offset})
     }, [])
   );
 
-  const { dragging, x, y, top, left, height, width } = data || {};
+  const { isDragging, x, y, top, left, height, width } = data || {};
 
   return (
     <div>
@@ -71,7 +71,7 @@ export function Debug() {
         ref={ref}
         style={{ width: '300px', height: '300px', background: 'grey' }}
       />
-      <div>Dragging: {dragging ? 'true' : 'false'}</div>
+      <div>Dragging: {isDragging ? 'true' : 'false'}</div>
       <div>Pointer position: x = {x}, y = {y}</div>
       <div>Element position: top = {top}, left = {left}</div>
       <div>Element size: width = {width}, height = {height}</div>
@@ -82,7 +82,7 @@ export function Debug() {
 
 Here's the type information for the callback you need to define:
 ```typescript
-type Callback = (
+type Callback = ({
   isDragging: boolean,
   x: number,
   y: number,
@@ -91,8 +91,8 @@ type Callback = (
     height: number,
     left: number,
     top: number,
-  },
-) => void;
+  }
+}) => void;
 ```
 Please see the `use-pointer-drag.ts` file for an up to date definition.
 This package exports types as well, so you can get the information on your

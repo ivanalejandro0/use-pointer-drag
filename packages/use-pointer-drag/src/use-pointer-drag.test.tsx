@@ -13,7 +13,7 @@ test("can drag horizontally", async () => {
   const user = userEvent.setup({ document });
   let resultX: number = 0;
 
-  const { result } = renderHook(() => usePointerDrag((_isDragging, x, _y) => {
+  const { result } = renderHook(() => usePointerDrag(({x}) => {
     resultX = x;
   }));
 
@@ -37,7 +37,7 @@ test("can drag vertically", async () => {
   const user = userEvent.setup({ document });
   let resultY: number = 0;
 
-  const { result } = renderHook(() => usePointerDrag((_isDragging, _x, y) => {
+  const { result } = renderHook(() => usePointerDrag(({y}) => {
     resultY = y;
   }));
 
@@ -59,7 +59,7 @@ test("tracks every point where the pointer was", async () => {
   const user = userEvent.setup({ document });
   let results: number[] = [];
 
-  const { result } = renderHook(() => usePointerDrag((_isDragging, x, _y) => {
+  const { result } = renderHook(() => usePointerDrag(({x}) => {
     results.push(x)
   }));
 
@@ -96,7 +96,7 @@ test("drag outside of bar works", async () => {
   const user = userEvent.setup();
   let resultX: number = 0;
 
-  const { result } = renderHook(() => usePointerDrag((_isDragging, x) => {
+  const { result } = renderHook(() => usePointerDrag(({x}) => {
     resultX = x;
   }));
   render(<MyDiv ref={result.current} />);
