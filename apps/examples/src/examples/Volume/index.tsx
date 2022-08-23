@@ -25,7 +25,8 @@ export function Volume() {
 
   const ref = usePointerDrag(
     useCallback(({ isDragging, y, offset }) => {
-      let h = Math.round(100 * (y - offset.top) / offset.height);
+      const adjustedY = y + window.scrollY;
+      let h = Math.round(100 * (adjustedY - offset.top) / offset.height);
       h = Math.min(h, 100);
       h = Math.max(h, 0);
       // h = Math.round(h / 10) * 10; // in steps of 10
