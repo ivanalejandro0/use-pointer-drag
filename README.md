@@ -110,7 +110,7 @@ The event handler you need to define will receive information about:
 
 ## Examples
 Check out [the examples
-folder](https://github.com/ivanalejandro0/use-pointer-drag/apps/examples/),
+folder](https://github.com/ivanalejandro0/use-pointer-drag/tree/main/apps/examples/),
 you'll find a very basic app created to showcase some of the components you can
 easily build using this library.
 
