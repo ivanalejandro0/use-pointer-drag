@@ -6,6 +6,9 @@ pointer (mouse, touch) drag actions on your components.
 
 Includes Typescript support, examples and tests.
 
+[![license](https://img.shields.io/github/license/ivanalejandro0/use-pointer-drag)](https://github.com/ivanalejandro0/use-pointer-drag/blob/main/LICENSE)
+[![npm (scoped)](https://img.shields.io/npm/v/@ivanalejandro0/use-pointer-drag)](https://www.npmjs.com/package/@ivanalejandro0/use-pointer-drag)
+
 <hr />
 
 [Why?](#why) |
