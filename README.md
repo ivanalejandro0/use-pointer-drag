@@ -37,12 +37,12 @@ allows.
 ## Installation
 Using yarn:
 ```
-$ yarn add @ivanalejandro0/use-pointer-drag
+yarn add @ivanalejandro0/use-pointer-drag
 ```
 
 Using npm:
 ```
-$ npm install --save @ivanalejandro0/use-pointer-drag
+npm install --save @ivanalejandro0/use-pointer-drag
 ```
 
 ## How to use
